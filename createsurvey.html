@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Survey</title>
+    <style>
+      body{
+        background-color: rgb(2, 2, 44);
+      }
+      #container {
+        width: 80%;
+        margin: auto;
+        text-align: center;
+        margin-top: 100px;
+      }
+      form {
+        width: 250px;
+        margin: auto;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        margin-top: 50px;
+      }
+      form * {
+        width: 100%;
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="container">
+      <h1 style="color: white;">Create Your Survey Here!</h1>
+      <form>
+        <input type="text" placeholder="Title" required id="name" />
+        <br />
+        <input style="margin-top: 20px;" type="text" placeholder="Question No.1" required id="q1" />
+        <br />
+
+        <div style="display: flex; gap: 5px;">
+        <input type="text" placeholder="Option No.1" required id="op1" />
+        <br />
+        <input type="text" placeholder="Option No.2" required id="op2" />
+        <br />
+      </div>
+      <div style="display: flex; gap: 5px;">
+        <input type="text" placeholder="Option No.3" required id="op3" />
+        <br />
+        <input type="text" placeholder="Option No.4" required id="op4" />
+        <br />
+      </div>
+
+
+        <input style="margin-top: 20px;" type="text" placeholder="Question No.2" required id="q2" />
+        <br />
+        <div style="display: flex; gap: 5px;">
+        <input type="text" placeholder="Option No.1" required id="op11" />
+        <br />
+        <input type="text" placeholder="Option No.2" required id="op22" />
+        <br />
+    </div>
+    <div style="display: flex; gap: 5px;">
+        <input type="text" placeholder="Option No.3" required id="op33" />
+        <br />
+        <input type="text" placeholder="Option No.4" required id="op44" />
+        <br />
+        </div>
+
+
+
+        <input type="submit"/>
+      </form>
+    </div>
+  </body>
+</html>
+<script>
+  let productsArr = JSON.parse(localStorage.getItem("products")) || [];
+  let form = document.querySelector("form");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    
+    let product = {
+      name: form.name.value,
+      
+      q1:form.q1.value,
+      op1:form.op1.value,
+      op2:form.op2.value,
+      op3:form.op3.value,
+      op4:form.op4.value,
+
+
+      q2: form.q2.value,
+      op11:form.op11.value,
+      op22:form.op22.value,
+      op33:form.op33.value,
+      op44:form.op44.value
+    };
+      productsArr.push(product);
+      localStorage.setItem("products", JSON.stringify(productsArr));
+      alert('Survey created successfully')
+      form.reset()
+      window.location.assign('./mysurvey.html');
+      
+  });
+</script>

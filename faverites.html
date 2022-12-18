@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faverites</title>
+    <style>
+         body{
+        background-color: rgb(2, 2, 44);
+    }
+    #products{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 30px;
+        width: 80%;
+        margin: auto;
+        text-align: center;
+        margin-top: 50px;
+        color: white;
+    }
+    #products>div{
+        width: 200px;
+        margin: auto;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+    #products>div h3{
+        margin-right: 110px;
+    }
+    #products>div h5{
+        margin-right: 80px;
+    }
+    #products button{
+        background-color: white;
+        border: 0px;
+        border-radius: 4px;
+        width: 150px;
+        height: 40px;
+    }
+    </style>
+</head>
+<body>
+    <h1 style="color: white;">Faverites:</h1>
+    <div id="products">
+
+    </div>
+
+</body>
+</html>
+<script>
+let cartItems = JSON.parse(localStorage.getItem("cartItems"));
+cartItems.forEach(function(el){
+ 
+    let parent = document.querySelector("#products");
+    let card = document.createElement("div");
+    
+    
+    let title=document.createElement("h3")
+        title.textContent=el.name;
+
+        let q1=document.createElement("h5")
+        q1.textContent=el.q1;
+
+        let op1=document.createElement("p")
+        op1.textContent=el.op1;
+
+        let op2=document.createElement("p")
+        op2.textContent=el.op2;
+
+        let op3=document.createElement("p")
+        op3.textContent=el.op3;
+
+        let op4=document.createElement("p")
+        op4.textContent=el.op4;
+
+        let q2=document.createElement("h5")
+        q2.textContent=el.q2;
+
+        let op11=document.createElement("p")
+        op11.textContent=el.op11;
+
+        let op22=document.createElement("p")
+        op22.textContent=el.op22;
+
+        let op33=document.createElement("p")
+        op33.textContent=el.op33;
+
+        let op44=document.createElement("p")
+        op44.textContent=el.op44;
+
+
+        let rem = document.createElement('button');
+    rem.textContent = 'remove';
+    rem.addEventListener('click',function(){
+    
+       
+        cartItems.splice(el);
+       
+        localStorage.setItem('cartItems',JSON.stringify(cartItems));
+       
+        window.location.assign('./mysurvey.html');
+       })
+        card.append( title,q1,op1,op2,op3,op4,q2,op11,op22,op33,op44,rem)
+        parent.append(card)
+
+})
+</script>
